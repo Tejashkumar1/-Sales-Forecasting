@@ -1,0 +1,37 @@
+CAPSTONE PROJECT 3: SALES / DEMAND FORECASTING
+==================================================
+
+1. TIME-BASED DATA ANALYSIS
+----------------------------------------
+Date range: 2024-01-01 to 2025-12-30 (730 days, no gaps)
+
+2. TREND AND SEASONALITY
+----------------------------------------
+Trend: sales grew from about 570/day to about 1011/day over the period.
+Sunday is consistently the strongest sales day.
+A seasonal demand bump also appears in the Oct-Nov window.
+
+3. FORECASTING MODEL COMPARISON
+----------------------------------------
+Test period: last 60 days (time-ordered split, not random).
+
+Seasonal Naive (baseline): MAE=136.95, RMSE=158.99, MAPE=13.87%
+Moving Average (14-day): MAE=141.97, RMSE=167.46, MAPE=14.47%
+Holt-Winters Exponential Smoothing: MAE=158.32, RMSE=183.33, MAPE=16.07%
+Linear Regression (trend + day-of-week): MAE=86.19, RMSE=113.78, MAPE=7.88%
+
+Best model: Linear Regression (trend + day-of-week) (MAE = 86.19)
+This beats the baseline by 37.1%, a real improvement.
+
+4. BUSINESS IMPACT ANALYSIS
+----------------------------------------
+Average daily forecast error (best model): 86.19 units.
+At $8.5 profit per unit, that is roughly $733 per day in over or under stocking risk.
+Annualized, about $267404 per year in residual inventory cost that forecasting alone cannot remove.
+Value of switching from the baseline to the best model: about $157483 per year saved.
+
+RECOMMENDATIONS:
+- Plan extra staff and stock for Sundays, it is a structural pattern.
+- Build in extra stock ahead of the Oct-Nov seasonal window.
+- Use Linear Regression (trend + day-of-week) for forecasting, but keep the baseline as a check.
+  If the model error goes above the baseline error, the pattern has likely shifted.
